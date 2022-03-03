@@ -1,7 +1,4 @@
-import br.com.dio.desafio.dominio.Bootcamp;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Dev;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 
@@ -22,6 +19,11 @@ public class Main {
         mentoria.setDescricao("descrição mentoria java");
         mentoria.setData(LocalDate.now());
 
+        Desafio desafio = new Desafio();
+        desafio.setTitulo("Abstraindo Bootcamp com POO");
+        desafio.setDescricao("Descricao Deafio POO");
+        System.out.println(desafio);
+
         /*System.out.println(curso1);
         System.out.println(curso2);
         System.out.println(mentoria);*/
@@ -32,6 +34,7 @@ public class Main {
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
         bootcamp.getConteudos().add(mentoria);
+        bootcamp.getConteudos().add(desafio);
 
         Dev devCamila = new Dev();
         devCamila.setNome("Camila");
@@ -50,6 +53,7 @@ public class Main {
         devJoao.setNome("Joao");
         devJoao.inscreverBootcamp(bootcamp);
         System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        devJoao.progredir();
         devJoao.progredir();
         devJoao.progredir();
         devJoao.progredir();

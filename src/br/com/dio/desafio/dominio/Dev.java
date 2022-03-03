@@ -1,9 +1,6 @@
 package br.com.dio.desafio.dominio;
 
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Dev {
     private String nome;
@@ -17,9 +14,28 @@ public class Dev {
 
     public void progredir() {
         Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        Scanner scanner = new Scanner(System.in);
         if(conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.conteudosInscritos.remove(conteudo.get());
+            switch (conteudo.get().tipoConteudo()) {
+                case 0:
+                case 1:
+                    this.conteudosConcluidos.add(conteudo.get());
+                    this.conteudosInscritos.remove(conteudo.get());
+                    break;
+                case 2:
+                    while (conteudosInscritos.iterator().hasNext()){
+                        if(conteudosInscritos.iterator().next().equals(conteudo.get())){
+                            Desafio conteudo1 = new Desafio();
+                            conteudo1 = (Desafio) conteudosInscritos.iterator().next();
+                            System.out.println("Insira o link do repositório do Desafio: ");
+                            conteudo1.setLinkRepositorio(scanner.next());
+                            this.conteudosConcluidos.add(conteudo1);
+                            this.conteudosInscritos.remove(conteudosInscritos.iterator().next());
+                            break;
+                        }
+                    }
+                    break;
+            }
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }

@@ -9,6 +9,11 @@ public class Curso extends Conteudo{
         return XP_PADRAO * cargaHoraria;
     }
 
+    @Override
+    public int tipoConteudo() {
+        return 0;
+    }
+
     public Curso() {
     }
 
